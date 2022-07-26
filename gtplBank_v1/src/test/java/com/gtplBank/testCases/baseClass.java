@@ -5,15 +5,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
+import com.gtplBank.utilities.readConfig;
+
+
 public class baseClass {
-	public static String url="https://demo.guru99.com/v4/";
-	public static String uname="mngr26593";
-	public static String password="1299guru@";
+	
+	static readConfig readconfig= new readConfig();
+	
+	public static String url= readconfig.getURL();
+	public static String uname=readconfig.getUserName();
+	public static String password=readconfig.password();
 	public static WebDriver driver;
+	//public static Logger logger;
 	
 	@BeforeClass
-	public void setUp() {
+	public void setUp(){
 		driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+	//Logger logger= Logger.getLogger("gtplBank");
+	//PropertyConfigurator.configure("log4j.properties");
+	
+		
 	}
 	@AfterMethod
 	public void tearDown() {
